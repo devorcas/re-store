@@ -1,28 +1,19 @@
-import React, {Component} from "react";
+import React from "react";
+import {Route, Switch} from 'react-router-dom';
+import {HomePage, CartPage} from '../pages';
 
-import ErrorBoundary from "../error-boundary/error-boundary";
-import Spinner from "../spiner";
-import BookstoreService from "../../services/bookstore-service";
-import {
-  BookStoreServiceProvider
-} from "../bookstore-service-context/bookstore-service-context";
-
-export default class App extends Component{
-
-
-  state = {
-    bookStoreService: new BookstoreService()
-  }
-
-  render() {
-    const {bookStoreService} = this.state;
-
+const App = () => {
     return (
-          <ErrorBoundary>
-            <BookStoreServiceProvider value={bookStoreService}>
-              <Spinner/>
-            </BookStoreServiceProvider>
-          </ErrorBoundary>
-    )
-  }
-}
+        <Switch>
+            <Route path="/"
+                   component={HomePage}
+                   exact/>
+            <Route path="/cart"
+                   component={CartPage}
+            />
+        </Switch>
+    );
+};
+
+export default App;
+
