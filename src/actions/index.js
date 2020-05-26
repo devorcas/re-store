@@ -21,6 +21,27 @@ const booksError = (error) => {
   }
 }
 
+export const bookAddedToCard = (bookId) => {
+  return {
+    type: 'BOOK_ADD_TO_CARD',
+    payload: bookId
+  }
+}
+
+export const bookRemovedToCard = (bookId) => {
+  return {
+    type: 'BOOK_REMOVED_TO_CARD',
+    payload: bookId
+  }
+}
+
+export const allBookRemovedToCard = (bookId) => {
+  return {
+    type: 'ALL_BOOK_REMOVED_TO_CARD',
+    payload: bookId
+  }
+}
+
 const fetchBooks = (dispatch, bookstoreService) => () => {
   dispatch(booksRequested());
   bookstoreService.getBooks()
